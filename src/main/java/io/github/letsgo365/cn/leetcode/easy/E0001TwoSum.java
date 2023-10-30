@@ -31,13 +31,10 @@ public class E0001TwoSum {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> numIndexMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            numIndexMap.put(nums[i], i);
-        }
-        for (int i = 0; i < nums.length; i++) {
-            Integer index = numIndexMap.get(target - nums[i]);
-            if (index != null && index != i) {
-                return new int[]{i, index};
+            if (null != numIndexMap.get(target - nums[i])) {
+                return new int[]{numIndexMap.get(target - nums[i]), i};
             }
+            numIndexMap.put(nums[i], i);
         }
         return new int[]{};
     }
